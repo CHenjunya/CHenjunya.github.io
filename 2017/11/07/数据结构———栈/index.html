@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="星期四," />
+  <meta name="keywords" content="星期二," />
 
 
 
@@ -95,18 +95,18 @@
 
 
 
-<meta name="description" content="开始补数据结构  写数据结构实验报告————栈（出栈和入栈） 看数据结构基础视频 做数据结构的习题">
-<meta name="keywords" content="星期四">
+<meta name="description" content="顺序栈的实现和运算 #include  #include  #define OK 1 #define ERROR 0 #define OVERFLOW -2typedef int ElemType;typedef int Status;//—– 栈的顺序存储表示 —– #define STACK_INIT_SIZE 20 // 存储空间的初始分配量 #define STACKINCREMENT">
+<meta name="keywords" content="星期二">
 <meta property="og:type" content="article">
-<meta property="og:title" content="10-26">
-<meta property="og:url" content="http://yoursite.com/2017/10/26/10-26/index.html">
+<meta property="og:title" content="数据结构———栈">
+<meta property="og:url" content="http://yoursite.com/2017/11/07/数据结构———栈/index.html">
 <meta property="og:site_name" content="CHen">
-<meta property="og:description" content="开始补数据结构  写数据结构实验报告————栈（出栈和入栈） 看数据结构基础视频 做数据结构的习题">
+<meta property="og:description" content="顺序栈的实现和运算 #include  #include  #define OK 1 #define ERROR 0 #define OVERFLOW -2typedef int ElemType;typedef int Status;//—– 栈的顺序存储表示 —– #define STACK_INIT_SIZE 20 // 存储空间的初始分配量 #define STACKINCREMENT">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-26T12:25:03.448Z">
+<meta property="og:updated_time" content="2017-11-07T13:06:00.608Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="10-26">
-<meta name="twitter:description" content="开始补数据结构  写数据结构实验报告————栈（出栈和入栈） 看数据结构基础视频 做数据结构的习题">
+<meta name="twitter:title" content="数据结构———栈">
+<meta name="twitter:description" content="顺序栈的实现和运算 #include  #include  #define OK 1 #define ERROR 0 #define OVERFLOW -2typedef int ElemType;typedef int Status;//—– 栈的顺序存储表示 —– #define STACK_INIT_SIZE 20 // 存储空间的初始分配量 #define STACKINCREMENT">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/26/10-26/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/07/数据结构———栈/"/>
 
 
 
 
 
-  <title>10-26 | CHen</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>数据结构———栈 | CHen</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -249,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/26/10-26/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/07/数据结构———栈/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Y">
@@ -266,7 +266,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">10-26</h1>
+          <h1 class="post-title" itemprop="name headline">数据结构———栈</h1>
         
 
         <div class="post-meta">
@@ -278,8 +278,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-26T20:19:35+08:00">
-                2017-10-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-07T20:58:58+08:00">
+                2017-11-07
               </time>
             
 
@@ -316,12 +316,24 @@
       
 
       
-        <h1 id="开始补数据结构"><a href="#开始补数据结构" class="headerlink" title="开始补数据结构"></a>开始补数据结构</h1><hr>
-<ul>
-<li>写数据结构实验报告————栈（出栈和入栈）</li>
-<li>看数据结构基础视频</li>
-<li>做数据结构的习题</li>
-</ul>
+        <blockquote>
+<h1 id="顺序栈的实现和运算"><a href="#顺序栈的实现和运算" class="headerlink" title="顺序栈的实现和运算"></a>顺序栈的实现和运算</h1></blockquote>
+<p>#include <stdio.h></stdio.h></p>
+<p>#include <stdlib.h></stdlib.h></p>
+<p>#define OK 1</p>
+<p>#define ERROR 0</p>
+<p>#define OVERFLOW -2<br>typedef int ElemType;<br>typedef int Status;<br>//—– 栈的顺序存储表示 —–</p>
+<p>#define STACK_INIT_SIZE 20 // 存储空间的初始分配量</p>
+<p>#define STACKINCREMENT 10 // 存储空间的分配增量<br>typedef struct {<br>ElemType <em>base;<br>ElemType </em>top;<br>int stacksize;<br>} SqStack;<br>// 构造一个空栈 S<br>Status InitStack(SqStack &amp;S){<br>S.base = (ElemType <em>)malloc(STACK_INIT_SIZE </em> sizeof(ElemType));<br>if(!S.base) exit (OVERFLOW);<br>S.top = S.base;<br>S.stacksize = STACK_INIT_SIZE;<br>return OK;<br>}<br>// 判栈 S 是否为空栈<br>Status StackEmpty(SqStack S){<br>if (S.top==S.base) return OK;<br>else return ERROR;<br>}<br>//入栈函数<br>Status Push (SqStack &amp;S, ElemType e) {<br>//请在填此写代码，将该算法补充完整，参见书本 P47 Push 算法<br>    if(S.top - S.base &gt;= S.stacksize){//栈满，追加存储空间<br>    S.base =(ElemType <em> ) realloc ( S.base,<br>        (S.stacksize + STACKINCREMENT) </em> sizeof(ElemType));<br>    if(!S.base)exit(OVERFLOW);//存储分配失败<br>    S.top = S.base + S.stacksize;<br>    S.stacksize += STACKINCREMENT;<br>    }<br>    <em>S.top++ = e;<br>    return OK;<br>}//Push<br>//出栈函数<br>Status Pop (SqStack &amp;S, ElemType &amp;e) {<br>//请在此填写代码，将该算法补充完整，参见书本 P47 Pop 算法<br>    //若栈不空，则删除S的栈顶元素，用e返回其职，并返回OK;否则返回ERROR<br>    if(S.top == S.base) return ERROR;<br>    e = </em> –S.top;<br>    return OK;<br>}//Pop<br>//输出顺序栈函数<br>void OutStack(SqStack S)<br>{  int <em>p;<br>if(S.top == S.base){<br>printf(“这是一个空栈！”);<br>}<br>else<br>for(p= S.top-1; p&gt;= S.base;p–)<br>printf(“%6d”, </em>p);<br>printf(“\n”);<br>}<br>//主函数<br>void main()<br>{ SqStack s;<br>int cord; ElemType a;<br>printf(“第一次使用必须初始化！\n”);<br>do{<br>printf(“\n 主菜单 \n”);<br>printf(“ 1 初始化顺序栈 “);<br>printf(“ 2 插入一个元素 “);<br>printf(“ 3 删除栈顶元素 “);<br>printf(“ 4 结束程序运行 “);<br>printf(“\n——————————————————————————\n”);<br>printf(“请输入您的选择( 1, 2, 3, 4)”);<br>scanf(“%d”,&amp;cord);<br>printf(“\n”);<br>switch(cord)<br>{  case 1:<br>InitStack(s);<br>OutStack(s);<br>break;<br>case 2:<br>printf(“请输入要插入的数据元素：a=”);<br>scanf(“%d”,&amp;a);<br>Push(s,a);<br>printf(“%d 进栈之后的栈：”,a);<br>OutStack(s);<br>break;<br>case 3:<br>Pop(s,a);<br>printf(“栈顶元素 %d 出栈之后的栈：”,a);<br>OutStack(s);<br>break;<br>case 4:<br>exit(0);<br>}<br>}while (cord&lt;=4);<br>}</p>
+<blockquote>
+<h1 id="栈的应用—十进制转八进制"><a href="#栈的应用—十进制转八进制" class="headerlink" title="栈的应用—十进制转八进制"></a>栈的应用—十进制转八进制</h1></blockquote>
+<p>#include <stdio.h></stdio.h></p>
+<p>#include <stdlib.h></stdlib.h></p>
+<p>#define OK 1</p>
+<p>#define ERROR 0</p>
+<p>#define OVERFLOW -2<br>typedef int ElemType;<br>typedef int Status;</p>
+<p>#define STACK_INIT_SIZE 100</p>
+<p>#define STACKINCREMENT 10<br>typedef struct {<br>ElemType <em>base;<br>ElemType </em>top;<br>int stacksize;<br>} SqStack;<br>// 构造一个空栈 S<br>Status InitStack(SqStack &amp;S){<br>S.base = (ElemType <em>)malloc(STACK_INIT_SIZE </em> sizeof(ElemType));<br>if(!S.base) exit (OVERFLOW);<br>S.top = S.base;<br>S.stacksize = STACK_INIT_SIZE;<br>return OK;<br>}<br>// 判栈 S 是否为空栈<br>Status StackEmpty(SqStack S){<br>if (S.top==S.base) return OK;<br>else return ERROR;<br>}<br>//入栈函数<br>Status Push (SqStack &amp;S, ElemType e) {<br>//请在此填写代码，将该算法补充完整<br>    if(S.top - S.base &gt;= S.stacksize){//栈满，追加存储空间<br>    S.base =(ElemType <em> ) realloc ( S.base,<br>        (S.stacksize + STACKINCREMENT) </em> sizeof(ElemType));<br>    if(!S.base)exit(OVERFLOW);//存储分配失败<br>    S.top = S.base + S.stacksize;<br>    S.stacksize += STACKINCREMENT;<br>    }<br>    <em>S.top++ = e;<br>    return OK;<br>}//Push<br>//出栈函数<br>Status Pop (SqStack &amp;S, ElemType &amp;e) {<br>//请在此填写代码，将该算法补充完整<br>//若栈不空，则删除S的栈顶元素，用e返回其职，并返回OK;否则返回ERROR<br>    if(S.top == S.base) return ERROR;<br>    e = </em> –S.top;<br>    return OK;<br>}//Pop<br>//十进制转八进制函数<br>void conversion()<br>{ SqStack S;<br>int n,e;<br>//请在此填写代码，将该算法补充完整，参见书本 P48 算法 3.1<br>InitStack(S);   //构造空栈<br>scanf (“%d”,&amp;n);<br>while (n){<br>Push(S,n % 8);<br>n = n/8;<br>}<br>while (!StackEmpty(S)){<br>Pop(S,e);<br>printf(“%d”,e);<br>}<br>}<br>void main()<br>{<br>conversion();<br>}</p>
 
       
     </div>
@@ -339,7 +351,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/星期四/" rel="tag"># 星期四</a>
+            <a href="/tags/星期二/" rel="tag"># 星期二</a>
           
         </div>
       
@@ -352,8 +364,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/25/10-25/" rel="next" title="10-25">
-                <i class="fa fa-chevron-left"></i> 10-25
+              <a href="/2017/10/27/10-27/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -361,10 +373,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/27/10-27/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -488,7 +496,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开始补数据结构"><span class="nav-number">1.</span> <span class="nav-text">开始补数据结构</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#顺序栈的实现和运算"><span class="nav-number">1.</span> <span class="nav-text">顺序栈的实现和运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#栈的应用—十进制转八进制"><span class="nav-number">2.</span> <span class="nav-text">栈的应用—十进制转八进制</span></a></li></ol></div>
             
 
           </div>
